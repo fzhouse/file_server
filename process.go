@@ -217,7 +217,7 @@ func pingLogStat(fi *os.File, sheet *xlsx.Sheet) {
 			log.Fatal(err)
 		}
 		line = strings.TrimSpace(line)
-		info := strings.Split(line, " ")
+		info := strings.Split(line, ",")
 		if len(info) == 4 {
 			ping.Pkt_tot += 1
 			if info[2] == "-1" {
@@ -251,7 +251,7 @@ func tracertLogStat(fi *os.File, sheet *xlsx.Sheet) {
 			log.Fatal(err)
 		}
 		line = strings.TrimSpace(line)
-		info := strings.Split(line, " ")
+		info := strings.Split(line, ",")
 		Delay, err := get_Delay(info[1:4])
 		if err != nil {
 			log.Fatal(err)
