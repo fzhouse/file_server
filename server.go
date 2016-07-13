@@ -14,7 +14,7 @@ func fileHandler(resp http.ResponseWriter, req *http.Request) {
 	if req.Method == "PUT" {
 		vars := mux.Vars(req)
 		filename := vars["filename"]
-		f, err := os.Create(filename)
+		f, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE, 0644)
 		if err != nil {
 			log.Println(err)
 		}
